@@ -1,0 +1,121 @@
+# pytest_test_framework_demo.txt
+----------------------------------
+
+1. Prestenting Codesis set up
+	- 2 unit tests
+		- math
+		- gate
+	- 1 function
+	_ Main (all programs called in main)
+	* easy to understant 
+	* resemble in structure the real project
+
+2. No *.csv & *.xml content in the directory
+ . Show directory content
+	ls *.csv
+   	ls *.xml
+   	ls *
+
+3. show the following text documents
+	var_in.txt
+	var_out.txt
+	input_value_a.txt
+	input_value_b.txt
+	input_value_c.txt
+	input_value_d.txt
+	** explain:
+		you can test as many in inputs/outputs you want
+		you can test as many in test vales as you want
+
+4. Show "main fn for connected to codesys
+	python_connect_codesys1.py
+	explain:
+		there are many file.py that are imported for this to happen
+		fn:
+			- closes runing program
+			- runs program
+			- writes val to input variables
+			- creates a resuts csv (input and output var/val)
+	** get in and out
+	** run test
+	** creates a db 
+	** done
+
+5. open csv file "results.csv":
+	** explain:
+		- this is the file from codesys var/val for each trial
+			* it works no-mater number of var or vals
+
+6. pytest
+==========
+	tests all files in directory and subdirectory
+	By default, pytest runs tests in sequential order
+	the filename and fn name have to start with test*
+
+	**extremely easy - lets make one:
+	start-process notepad++ test_temp.py
+	def test_fn():
+	    assert 2 == 2
+
+	show all 3 of the test files:
+	- one for each unit/fn
+	- explain:
+		- takes the data from the result.csv
+		- cleans and process through python code (show the from ..import)
+		** the the python logic is assest again codesys logic
+			-can test anything you want to as many or as little 
+
+		        - you can get the desired level of detail out of each test:
+		python -m pytest 
+		python -m pytest -v                                   # more verbose
+		python -m pytest -s -v                                # & print
+		python -m pytest -v                                   # more verbose & print
+		python -m pytest test_math_op.py                      # to test specific file
+		python -m pytest -s test_math_op.py                   # use the "-s" flag when you want the print 
+		python -m pytest -s test_math_op.py::test_multiplication -v  # runs the specific test within the file
+
+			-once test are created you can run the subset of the test suite
+				a. -pytest -k <substring> -v # based on name 
+				b. - based on the MARKERS Upplied // needs 
+					- @pytest.mark.<markername>
+					  pytest -m <markername> -v
+					- needs "pytest.ini" -> open the file
+
+			Parameterizing of a test:
+			run the test against multiple sets of inputs
+			@pytest.mark.parametrize()
+			ex:
+				@pytest.mark.parametrize("num, output",[(1,11),(2,22),(3,35),(4,44)])
+
+			- @pytest.fixture
+				* run before each test function to which it is applied. 
+				*feed some data to the tests 
+				such as:
+					database connections
+					URLs to test 
+					input data 
+						*applies within the test file only 
+						-To make a fixture available to multiple test files, 
+						-	make "conftest.py"-> open the file
+
+Extras: 
+xfail / skip 
+-----------
+consider the below situations:
+	A test is not relevant for some time due to some reasons.
+	A new feature is being implemented and we already added a test for that feature.
+
+xfailed test:
+------------ 
+	Pytest will execute the xfailed test, 
+		but it will not be considered as part failed or passed tests.
+		@pytest.mark.xfail
+Skipping a test: 
+	means that the test will not be executed. 
+	@pytest.mark.skip
+
+# print .xml report
+python -m pytest -s test_math_op.py -v --junitxml="result.xml"
+
+# graph display 
+python display.py 

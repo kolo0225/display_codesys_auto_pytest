@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="17" time="0.557" timestamp="2023-02-15T15:39:37.673601" hostname="DESKTOP-4LKUNRP"><testcase classname="test_math_op" name="test_addition[2.0-1.0-3.0]" time="0.001" /><testcase classname="test_math_op" name="test_addition[3.0-2.0-5.0]" time="0.000" /><testcase classname="test_math_op" name="test_addition[4.0-3.0-7.0]" time="0.000" /><testcase classname="test_math_op" name="test_addition[5.0-4.0-9.0]" time="0.000" /><testcase classname="test_math_op" name="test_addition[6.0-5.0-11.0]" time="0.000" /><testcase classname="test_math_op" name="test_add_less" time="0.003"><failure message="assert 11.0 &lt; 10">upper_limit = 10
+
+    def test_add_less(upper_limit):
+        for output_add in list_of_ouput_lists[0]:
+    
+&gt;           assert output_add &lt; upper_limit
+E           assert 11.0 &lt; 10
+
+test_math_op.py:85: AssertionError</failure></testcase><testcase classname="test_math_op" name="test_subtraction[2.0-1.0-1.0]" time="0.001" /><testcase classname="test_math_op" name="test_subtraction[3.0-2.0-1.0]" time="0.000" /><testcase classname="test_math_op" name="test_subtraction[4.0-3.0-1.0]" time="0.001" /><testcase classname="test_math_op" name="test_subtraction[5.0-4.0-1.0]" time="0.001" /><testcase classname="test_math_op" name="test_subtraction[6.0-5.0-1.0]" time="0.001" /><testcase classname="test_math_op" name="test_sub_compare" time="0.003" /><testcase classname="test_math_op" name="test_multiplication[2.0-1.0-2.0]" time="0.001" /><testcase classname="test_math_op" name="test_multiplication[3.0-2.0-6.0]" time="0.001" /><testcase classname="test_math_op" name="test_multiplication[4.0-3.0-12.0]" time="0.001" /><testcase classname="test_math_op" name="test_multiplication[5.0-4.0-20.0]" time="0.001" /><testcase classname="test_math_op" name="test_multiplication[6.0-5.0-30.0]" time="0.001" /></testsuite></testsuites>
